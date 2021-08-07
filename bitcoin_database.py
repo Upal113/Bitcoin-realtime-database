@@ -40,4 +40,6 @@ while True:
   data=json.dumps(json.loads(coin_df.to_json(orient='records')))
   ref.set(data)
   print(data)
-  time.sleep(5)
+  time.sleep(60)
+
+  
