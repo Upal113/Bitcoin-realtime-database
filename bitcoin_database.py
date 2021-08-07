@@ -13,10 +13,8 @@ cred = credentials.Certificate("crypto-database-7f5d1-firebase-adminsdk-pr6ob-0e
 app = firebase_admin.initialize_app(cred)
 
 ref = db.reference("/", url='https://crypto-database-7f5d1-default-rtdb.firebaseio.com/')
-print(ref.get())
 i = 1
 coin_data_list = []
-'''
 
 while True:
   print(i)
@@ -44,4 +42,3 @@ while True:
   ref.set(data)
   print(data)
   time.sleep(5)
-'''
