@@ -27,7 +27,6 @@ while True:
   current_date = dt.datetime.now()
 
   coin_dict = {
-    'Index' : i,
     'Coin Name' : 'Bitcoin',
     'Current Price' : current_price,
     'Market Cap' : market_cap,
