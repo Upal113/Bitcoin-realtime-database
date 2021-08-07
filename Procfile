@@ -1,1 +1,1 @@
-worker: python bitcoin_database.py
+ web: python bitcoin_database.py
