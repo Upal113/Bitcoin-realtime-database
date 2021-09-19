@@ -8,11 +8,15 @@ import datetime as dt
 import time
 import json
 import openpyxl
+import fsspec
+import requests
+import urllib3
+import json
 
 cred = credentials.Certificate("crypto-database-7f5d1-firebase-adminsdk-pr6ob-0e60267db9.json")
 app = firebase_admin.initialize_app(cred)
 
-ref = db.reference(app=app, url='https://crypto-database-7f5d1-default-rtdb.firebaseio.com/')
+ref = db.reference("/", url='https://bitcoin-realtime-database-default-rtdb.firebaseio.com/')
 i = 1
 coin_data_list = []
 
@@ -34,12 +38,7 @@ while True:
     'Price Volume' : price_volume,
     'Date' : current_date,
   }
-  coin_data_list.append(coin_dict)
-  i = i+1
-  coin_df = pd.DataFrame(coin_data_list)
-  data=json.dumps(json.loads(coin_df.to_json(orient='records')))
-  ref.push(data)
-  print(data)
+  ref.push(coin_dict)
   time.sleep(60)
 
   
