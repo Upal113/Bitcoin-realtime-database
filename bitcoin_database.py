@@ -12,7 +12,7 @@ import openpyxl
 cred = credentials.Certificate("crypto-database-7f5d1-firebase-adminsdk-pr6ob-0e60267db9.json")
 app = firebase_admin.initialize_app(cred)
 
-ref = db.reference("/", url='https://crypto-database-7f5d1-default-rtdb.firebaseio.com/')
+ref = db.reference(app=app, url='https://crypto-database-7f5d1-default-rtdb.firebaseio.com/')
 i = 1
 coin_data_list = []
 
@@ -38,7 +38,7 @@ while True:
   i = i+1
   coin_df = pd.DataFrame(coin_data_list)
   data=json.dumps(json.loads(coin_df.to_json(orient='records')))
-  ref.set(data)
+  ref.push(data)
   print(data)
   time.sleep(60)
 
